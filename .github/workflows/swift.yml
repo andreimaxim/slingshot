@@ -30,24 +30,8 @@ jobs:
     
     - name: Run tests
       run: swift test --disable-xctest --verbose
+      # Note: --disable-xctest runs only Swift Testing framework
     
     - name: Build for release
       run: swift build -c release
 
-  macos-test:
-    runs-on: macos-latest
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Print Swift version
-      run: swift --version
-    
-    - name: Build
-      run: swift build --verbose
-    
-    - name: Run tests
-      run: swift test --disable-xctest --verbose
-    
-    - name: Build for release
-      run: swift build -c release
