@@ -5,37 +5,28 @@ import PackageDescription
 
 let package = Package(
     name: "Slingshot",
-    platforms: [
-        .macOS(.v13),
-        .iOS(.v16),
-        .tvOS(.v16),
-        .watchOS(.v9),
-        .visionOS(.v1)
-    ],
     products: [
-        .executable(name: "slingshot", targets: ["SlingshotCLI"]),
+        .executable(name: "slingshot", targets: ["slingshot"]),
         .library(name: "Slingshot", targets: ["Slingshot"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.3.0"),
     ],
     targets: [
-        // Executable target
+        // Library target
+        .target(
+            name: "Slingshot",
+            dependencies: []),
+        
+        // Executable target (minimal, just imports and runs)
         .executableTarget(
-            name: "SlingshotCLI",
+            name: "slingshot",
             dependencies: [
                 "Slingshot",
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ]),
         
-        // Library target
-        .target(
-            name: "Slingshot",
-            dependencies: [
-                .product(name: "ArgumentParser", package: "swift-argument-parser"),
-            ]),
-        
-        // Test target for the library using Swift Testing only
+        // Test target
         .testTarget(
             name: "SlingshotTests",
             dependencies: ["Slingshot"]),

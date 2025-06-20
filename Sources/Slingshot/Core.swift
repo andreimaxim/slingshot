@@ -1,7 +1,5 @@
 import Foundation
 
-// MARK: - Main API
-
 public func run(config: Config = Config()) {
     if config.verbose {
         print("Starting Slingshot HTTP Reverse Proxy...")
