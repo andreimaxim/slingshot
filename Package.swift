@@ -5,10 +5,36 @@ import PackageDescription
 
 let package = Package(
     name: "Slingshot",
+    platforms: [
+        .macOS(.v15)
+    ],
+    products: [
+        .library(
+            name: "SlingshotKit",
+            targets: ["SlingshotKit"]
+        ),
+        .executable(
+            name: "slingshot",
+            targets: ["slingshot"]
+        )
+    ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.5.0")
+    ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
+        .target(
+            name: "SlingshotKit"
+        ),
         .executableTarget(
-            name: "Slingshot"),
+            name: "slingshot",
+            dependencies: [
+                "SlingshotKit",
+                .product(name: "ArgumentParser", package: "swift-argument-parser")
+            ]
+        ),
+        .testTarget(
+            name: "SlingshotKitTests",
+            dependencies: ["SlingshotKit"]
+        )
     ]
 )
