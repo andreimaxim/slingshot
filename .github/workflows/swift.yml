@@ -9,14 +9,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container: swift:6.1
     
     steps:
     - uses: actions/checkout@v4
-    
-    - name: Setup Swift
-      uses: swift-actions/setup-swift@v2
-      with:
-        swift-version: '6.1'
     
     - name: Print Swift version
       run: swift --version
@@ -26,7 +22,6 @@ jobs:
     
     - name: Run tests
       run: swift test --disable-xctest --verbose
-      # Note: --disable-xctest runs only Swift Testing framework
     
     - name: Build for release
       run: swift build -c release
