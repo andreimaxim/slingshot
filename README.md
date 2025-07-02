@@ -1,6 +1,6 @@
 # Slingshot
 
-Slingshot is a robust and simple to use reverse proxy, meant to simplify the
+Slingshot is a single threaded reverse proxy, meant to simplify the
 development environment for engineers working on multiple microservices on
 their local machine.
 

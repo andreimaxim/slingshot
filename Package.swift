@@ -35,6 +35,13 @@ let package = Package(
         .testTarget(
             name: "SlingshotKitTests",
             dependencies: ["SlingshotKit"]
+        ),
+        .testTarget(
+            name: "SlingshotTests",
+            dependencies: [
+                "slingshot",
+                .product(name: "ArgumentParser", package: "swift-argument-parser")
+            ]
         )
     ]
 )
